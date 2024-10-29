@@ -1,3 +1,6 @@
+const { nanoid } = require('nanoid');
+const notes = require('./notes');
+
 const addNoteHandler = (request, h) => {
   const { title, tags, body } = request.payload;
 
@@ -22,6 +25,7 @@ const addNoteHandler = (request, h) => {
       },
     });
     response.code(201);
+    response.header('Access-Control-Allow-Origin', '*');
     return response;
   }
   const response = h.response({
